@@ -6,7 +6,7 @@ OUTPUT_DIR = os.path.join(os.getcwd(), 'output')
 
 def split():
     passed_intro = False
-    output = open(os.path.join(OUTPUT_DIR, 'title.md'), 'w')
+    output = open(os.path.join(OUTPUT_DIR, '0 - title.md'), 'w')
     chapter_counter = 0
 
     with open(INPUT_FILE, 'r') as input:
@@ -27,7 +27,9 @@ def split():
             if line.startswith('###'):
                 output.close()
                 output = open(os.path.join(OUTPUT_DIR, f'{chapter_counter} - {line[3:]}.md'), 'w')
-                output.write(f'{line}\n')
+                # Make it heading 1 instead of heading 3
+                output.write(f'{line[2:]}\n')
+                chapter_counter += 1
                 continue
 
             # A quote line to output
