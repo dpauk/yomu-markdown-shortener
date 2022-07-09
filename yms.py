@@ -4,8 +4,6 @@ passed_intro = False
 
 with open('input.md', 'r') as input:
     for line in input:
-        output_line = False
-
         if line == '## Annotations\n':
             passed_intro = True
             output.write(f'{line}\n')
